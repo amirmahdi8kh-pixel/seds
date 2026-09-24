@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "graphic-design",
+    "no": "01",
+    "name": "Graphic Design",
+    "subs": [
+      "Posters",
+      "Social Media",
+      "Branding",
+      "Typography"
+    ],
+    "intro": "Static work with a system behind it — posters, identities, editorial grids and social formats designed to stay consistent at any scale.",
+    "lede": "Posters, identities and content systems where typography does the heavy lifting."
+  },
+  {
+    "slug": "motion-video",
+    "no": "02",
+    "name": "Motion & Video",
+    "subs": [
+      "Motion Graphics",
+      "Video Editing",
+      "Reels"
+    ],
+    "intro": "Movement with intent — title sequences, cinematic edits and vertical-first reels cut for rhythm, clarity and emotion.",
+    "lede": "Editing, motion graphics and cinematic cuts built around rhythm and restraint."
+  },
+  {
+    "slug": "ai-visual-lab",
+    "no": "03",
+    "name": "AI Visual Lab",
+    "subs": [
+      "AI Films",
+      "AI Images",
+      "Experiments"
+    ],
+    "intro": "A sandbox for generative filmmaking and image-making — where prompts become storyboards and models become collaborators.",
+    "lede": "Generative films, image series and latent-space experiments treated with real craft."
+  },
+  {
+    "slug": "documentary",
+    "no": "04",
+    "name": "Documentary & Film",
+    "subs": [
+      "Short Films",
+      "Campaigns",
+      "Behind the Scenes"
+    ],
+    "intro": "Stories captured rather than constructed — short documentaries, campaign films and the honest mess of making them.",
+    "lede": "Short films, campaign storytelling and the behind-the-scenes truth of production."
+  }
+]

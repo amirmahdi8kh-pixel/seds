@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1400" width="1100" height="1400" preserveAspectRatio="xMidYMid slice">
+<defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+<radialGradient id="vig" cx="50%" cy="50%" r="78%"><stop offset="50%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity="0.55"/></radialGradient>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0E0E12"/><stop offset="1" stop-color="#1A1A22"/></linearGradient>
+<filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="154"/></filter>
+</defs>
+<rect width="1100" height="1400" fill="url(#bg)"/><ellipse cx="328.1693219067529" cy="758.8997341739015" rx="456.844176582992" ry="635.0728568825871" fill="#C7F94D" opacity="0.31" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="79.82759211678058" cy="388.38446774985647" rx="202.6586307976395" ry="364.61010722629726" fill="#4F7CFF" opacity="0.47" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="915.4397826245986" cy="568.4002492064611" rx="364.23827773332596" ry="326.08270107395947" fill="#E8452B" opacity="0.32" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="1030.9566582436673" cy="657.247579926625" rx="217.4429242070764" ry="642.7494167443365" fill="#1A1A22" opacity="0.55" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="842.3516747006216" cy="114.62456468958409" rx="439.6278142891824" ry="575.6093305796385" fill="#C7F94D" opacity="0.64" filter="url(#soft)" style="mix-blend-mode:screen"/>
+<rect width="1100" height="1400" fill="url(#vig)"/>
+<rect width="1100" height="1400" filter="url(#grain)" opacity="0.17" style="mix-blend-mode:overlay"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 950" width="1500" height="950" preserveAspectRatio="xMidYMid slice">
+<defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+<radialGradient id="vig" cx="50%" cy="50%" r="78%"><stop offset="50%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity="0.55"/></radialGradient>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#070B16"/><stop offset="1" stop-color="#131E3A"/></linearGradient>
+<filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="133"/></filter>
+</defs>
+<rect width="1500" height="950" fill="url(#bg)"/><ellipse cx="1383.9444397715852" cy="695.5535110889468" rx="442.76431462727487" ry="290.7579078543931" fill="#FF5A2B" opacity="0.41" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="955.6390835205093" cy="737.7045004686806" rx="514.3601659778506" ry="304.53801445802674" fill="#5C7CFF" opacity="0.53" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="1102.5157989934087" cy="327.52116081537685" rx="594.7642796672881" ry="324.5171169252135" fill="#8FB7FF" opacity="0.57" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="1309.6001751953736" cy="885.59665137087" rx="408.96062543615704" ry="431.20924490783364" fill="#131E3A" opacity="0.40" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="469.5946247898974" cy="487.01678421115497" rx="377.2165466286242" ry="307.6950725959614" fill="#FF5A2B" opacity="0.55" filter="url(#soft)" style="mix-blend-mode:screen"/><circle cx="925.3254431532696" cy="411.69839771930134" r="398.1430032290518" fill="none" stroke="#FF5A2B" stroke-width="3" opacity="0.75"/>
+<rect width="1500" height="950" fill="url(#vig)"/>
+<rect width="1500" height="950" filter="url(#grain)" opacity="0.17" style="mix-blend-mode:overlay"/>
+</svg>

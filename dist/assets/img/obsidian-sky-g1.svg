@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000" width="1500" height="1000" preserveAspectRatio="xMidYMid slice">
+<defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+<radialGradient id="vig" cx="50%" cy="50%" r="78%"><stop offset="50%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity="0.55"/></radialGradient>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#070B16"/><stop offset="1" stop-color="#131E3A"/></linearGradient>
+<filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="140"/></filter>
+</defs>
+<rect width="1500" height="1000" fill="url(#bg)"/><ellipse cx="382.42867462104186" cy="906.5139582846315" rx="412.3818428814411" ry="394.6129366848618" fill="#FF5A2B" opacity="0.48" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="-19.07031858572736" cy="314.52070365194237" rx="622.0225204713641" ry="318.8640042953194" fill="#5C7CFF" opacity="0.57" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="695.7284129457549" cy="784.7645943053067" rx="522.188905281946" ry="306.97548725642264" fill="#8FB7FF" opacity="0.63" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="83.53679798310624" cy="463.0220897495748" rx="480.0622028298676" ry="283.9166808128357" fill="#131E3A" opacity="0.58" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="76.38822131557392" cy="513.0117857363075" rx="308.16290932707483" ry="416.27045306377113" fill="#FF5A2B" opacity="0.37" filter="url(#soft)" style="mix-blend-mode:screen"/><circle cx="1133.410401712172" cy="668.6029666103424" r="347.87139996886253" fill="none" stroke="#FF5A2B" stroke-width="3" opacity="0.75"/>
+<rect width="1500" height="1000" fill="url(#vig)"/>
+<rect width="1500" height="1000" filter="url(#grain)" opacity="0.17" style="mix-blend-mode:overlay"/>
+</svg>

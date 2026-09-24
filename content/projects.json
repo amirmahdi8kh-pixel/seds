@@ -1,0 +1,585 @@
+[
+  {
+    "slug": "monolith",
+    "title": "Monolith",
+    "cat": "graphic-design",
+    "tags": [
+      "Posters"
+    ],
+    "year": "2026",
+    "client": "Nocturne Festival",
+    "role": "Art Direction & Design",
+    "tools": [
+      "Illustrator",
+      "InDesign",
+      "Photoshop",
+      "Grid Systems"
+    ],
+    "summary": "A 12-poster series for an experimental music festival, built on one brutalist grid and oversized type.",
+    "lede": "A poster system where one grid, one typeface and one attitude generate twelve distinct voices.",
+    "overview": [
+      "Nocturne is a three-night festival for experimental music, and its identity had to work as loudly at 3 metres as it did at 30 centimetres. The answer was constraint: a single six-column grid, a single grotesque, and a rule that every poster must break exactly one of the system’s rules.",
+      "Each night produced four variations — halftone performance photography, duotone colour fields, pure typographic compositions and one deliberate failure per set. The series was screen-printed in two inks, so every decision had to survive a physical process with no undo button."
+    ],
+    "quote": "A poster should stop you at ten metres and reward you at ten centimetres.",
+    "process": [
+      {
+        "t": "Grid first",
+        "d": "One six-column grid, two margins, zero exceptions — defined before a single image was chosen."
+      },
+      {
+        "t": "Type scale",
+        "d": "A single grotesque pushed from 8pt credits to 400pt headlines, tracking tightened as size grew."
+      },
+      {
+        "t": "Image treatment",
+        "d": "Performance photography pushed through halftone, duotone and high-contrast thresholds."
+      },
+      {
+        "t": "Print & output",
+        "d": "Two-ink screen printing, paper tests and registration marks as part of the visual language."
+      }
+    ],
+    "bts": "Twelve dummies were printed on newsprint before the final run. Three compositions died on the wall — too clever at distance — and were rebuilt the same night.",
+    "span": [
+      "7",
+      "5",
+      "12"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "signal",
+    "title": "Signal",
+    "cat": "graphic-design",
+    "tags": [
+      "Social Media"
+    ],
+    "year": "2025",
+    "client": "Aether Audio",
+    "role": "Visual System & Motion Templates",
+    "tools": [
+      "Figma",
+      "After Effects",
+      "Photoshop"
+    ],
+    "summary": "A modular content system of 60+ templates that keeps a fast-moving audio brand unmistakably itself.",
+    "lede": "Sixty-plus social templates that let a small team publish daily without ever looking generic.",
+    "overview": [
+      "Aether Audio ships a product every six weeks and was publishing with one-off graphics made in a hurry. The system had to make the fast path the beautiful path: modular frames, fixed type roles and a colour logic that survives whatever photo arrives from the studio.",
+      "Templates were built for every format — announcements, quotes, carousels, equaliser posts and launch films — then handed over with motion presets so the in-house team could animate without opening a blank composition."
+    ],
+    "quote": "A design system is only real when the fastest way to use it is also the best-looking one.",
+    "process": [
+      {
+        "t": "Audit",
+        "d": "Eighteen months of posts sorted into what felt ownable, what felt generic and what was missing."
+      },
+      {
+        "t": "Modules",
+        "d": "Frame library with fixed type roles, image ratios and a two-accent colour logic."
+      },
+      {
+        "t": "Motion presets",
+        "d": "After Effects rigs for entrances, equalisers and product callouts, exported as templates."
+      },
+      {
+        "t": "Handover",
+        "d": "A compact guide plus working files so the team can ship without a designer in the loop."
+      }
+    ],
+    "bts": "The whole system was stress-tested by rebuilding two real campaigns inside it before anything was documented.",
+    "span": [
+      "5",
+      "7",
+      "12"
+    ],
+    "featured": false
+  },
+  {
+    "slug": "ferro",
+    "title": "Ferro",
+    "cat": "graphic-design",
+    "tags": [
+      "Branding",
+      "Typography"
+    ],
+    "year": "2025",
+    "client": "Ferro Architects",
+    "role": "Identity & Typeface Design",
+    "tools": [
+      "Glyphs",
+      "Illustrator",
+      "Figma",
+      "InDesign"
+    ],
+    "summary": "A typographic identity for an architecture studio — custom wordmark, editorial grid, concrete restraint.",
+    "lede": "An architecture studio described in one weight of type and one honest grid.",
+    "overview": [
+      "Ferro builds in concrete, steel and daylight, and wanted an identity that behaved the same way: structural, unornamented, precise. The wordmark was drawn from a single stroke weight with cut terminals echoing formwork lines.",
+      "Around it sits an editorial system — project sheets, proposal covers and site signage — all set on a baseline grid that lets photography carry the emotion while the type simply holds the frame."
+    ],
+    "quote": "Identity for architects should feel like a good elevation: everything on it is structure.",
+    "process": [
+      {
+        "t": "Wordmark",
+        "d": "Custom letterforms drawn at one weight with cut terminals borrowed from formwork."
+      },
+      {
+        "t": "Grid & scale",
+        "d": "A baseline grid shared by business cards, proposals and site hoardings."
+      },
+      {
+        "t": "Applications",
+        "d": "Project sheets, signage, drawing-title blocks and a lightweight web starter."
+      },
+      {
+        "t": "Guidelines",
+        "d": "A short, image-led document that shows the system instead of describing it."
+      }
+    ],
+    "bts": "The final mark was drawn three times — twice too soft. The version that shipped was traced from an actual concrete sample photo.",
+    "span": [
+      "7",
+      "5",
+      "12"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "kinetic-identity",
+    "title": "Kinetic Identity",
+    "cat": "motion-video",
+    "tags": [
+      "Motion Graphics"
+    ],
+    "year": "2026",
+    "client": "Format Design Conference",
+    "role": "Motion Direction & Animation",
+    "tools": [
+      "After Effects",
+      "Cinema 4D",
+      "Illustrator"
+    ],
+    "summary": "A title sequence and motion language that turns a design conference identity into movement.",
+    "lede": "A static conference identity taught how to breathe, stretch and cut on beat.",
+    "overview": [
+      "Format’s identity was a set of rigid rectangles. The motion brief was to keep that rigour while making it feel alive — no bouncing, no easing tricks, just geometric behaviour: slide, clip, stack, reveal.",
+      "The deliverable was not one film but a language — a title sequence, forty lower-thirds, stage transitions and a set of timing rules so every screen in the venue felt cut by the same editor."
+    ],
+    "quote": "Motion is not decoration applied afterwards; it is the identity seen in time.",
+    "process": [
+      {
+        "t": "Timing rules",
+        "d": "One grid, three speeds, a shared easing curve written down before animation began."
+      },
+      {
+        "t": "Title sequence",
+        "d": "A 40-second opener built entirely from clips of the existing rectangle system."
+      },
+      {
+        "t": "Kit building",
+        "d": "Lower-thirds, stings and stage wipes as reusable, editable compositions."
+      },
+      {
+        "t": "Venue rollout",
+        "d": "Exports tested on LED walls, streams and social crops in parallel."
+      }
+    ],
+    "bts": "Everything was animated on a 12fps beat grid first, then smoothed — the chunky pass stayed in the final cut for four shots.",
+    "span": [
+      "7",
+      "5",
+      "12"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "nightshift",
+    "title": "Nightshift",
+    "cat": "motion-video",
+    "tags": [
+      "Video Editing"
+    ],
+    "year": "2025",
+    "client": "Lowbeam",
+    "role": "Edit & Colour",
+    "tools": [
+      "DaVinci Resolve",
+      "Premiere Pro",
+      "After Effects"
+    ],
+    "summary": "A one-take-feel music film cut from four hours of night footage into three minutes of rhythm.",
+    "lede": "Four hours of handheld night footage, cut until it felt like a single unbroken breath.",
+    "overview": [
+      "The band wanted the feeling of one continuous take without the limits that come with actually shooting one. The edit hides its seams: every cut lands on a light source crossing frame, so the eye never catches the join.",
+      "Colour was pulled toward sodium and shadow — amber streetlight against a cold blue base — with grain held rather than cleaned, because the footage’s imperfections were the point."
+    ],
+    "quote": "The best cut is the one the audience feels in their chest before they see it.",
+    "process": [
+      {
+        "t": "Paper edit",
+        "d": "Four hours logged by light, movement and lyric — not by the storyboard."
+      },
+      {
+        "t": "Assembly",
+        "d": "Structure built to the song’s stems, with transitions hidden inside light wipes."
+      },
+      {
+        "t": "Grade",
+        "d": "Sodium amber against cold blue base, grain retained, blacks lifted slightly."
+      },
+      {
+        "t": "Sound pass",
+        "d": "Location ambience layered under the mix so the city never leaves the frame."
+      }
+    ],
+    "bts": "Two of the best shots came from the battery dying mid-recording — the camera’s final frames became the opening.",
+    "span": [
+      "5",
+      "7",
+      "12"
+    ],
+    "featured": false
+  },
+  {
+    "slug": "pulse-reels",
+    "title": "Pulse Reels",
+    "cat": "motion-video",
+    "tags": [
+      "Reels"
+    ],
+    "year": "2026",
+    "client": "Rova Sportswear",
+    "role": "Editing & Motion Design",
+    "tools": [
+      "Premiere Pro",
+      "After Effects",
+      "Frame.io"
+    ],
+    "summary": "A vertical-first reel system engineered for sound-off viewing and fast product drops.",
+    "lede": "Product drops designed for a 3-second decision made without sound.",
+    "overview": [
+      "Rova drops a product every fortnight and needed reels that read instantly with the sound off. The system uses three fixed beats — hook, proof, payoff — with type large enough to survive a thumbnail and timing tight enough to survive a swipe.",
+      "Each drop ships as a set: a hero reel, three cutdowns and a still frame pulled from the same timeline, so the campaign stays coherent across feed, stories and paid placements."
+    ],
+    "quote": "In vertical video, the first frame is the headline and the second is the hook.",
+    "process": [
+      {
+        "t": "Hook design",
+        "d": "Three opening patterns tested against real retention data from the brand account."
+      },
+      {
+        "t": "Beat system",
+        "d": "Hook, proof, payoff — fixed durations so every drop feels like part of a series."
+      },
+      {
+        "t": "Sound-off type",
+        "d": "Oversized kinetic captions carrying the full message with audio muted."
+      },
+      {
+        "t": "Rapid delivery",
+        "d": "A project template that turns a new drop into eight exports in under an hour."
+      }
+    ],
+    "bts": "Shoots are filmed twice as tall as needed so the edit can reframe for stories, feed and paid without a second camera.",
+    "span": [
+      "7",
+      "5",
+      "12"
+    ],
+    "featured": false
+  },
+  {
+    "slug": "obsidian-sky",
+    "title": "Obsidian Sky",
+    "cat": "ai-visual-lab",
+    "tags": [
+      "AI Films"
+    ],
+    "year": "2026",
+    "client": "Self-initiated",
+    "role": "Direction, Generation & Edit",
+    "tools": [
+      "Runway Gen-3",
+      "Midjourney",
+      "Topaz Labs",
+      "DaVinci Resolve",
+      "After Effects"
+    ],
+    "summary": "A four-minute speculative AI film about memory, landscape and the images we lose.",
+    "lede": "A speculative short film assembled from generated frames, then cut, graded and finished like live action.",
+    "overview": [
+      "Obsidian Sky imagines a landscape that keeps rewriting itself — a place where every return reveals a version of the memory that never happened. The film was built by generating in disciplined bursts: one location, one palette, one camera behaviour per sequence.",
+      "Generation was only the raw footage. The real work was editorial — selecting eleven usable frames from hundreds, stabilising motion, rebuilding continuity, grading everything into one cinematic base and adding sound design that gives synthetic images weight."
+    ],
+    "quote": "AI gives you infinite frames; the craft is choosing the eleven that matter.",
+    "process": [
+      {
+        "t": "Prompt direction",
+        "d": "Shot list, lens language and palette locked before generation to avoid model drift."
+      },
+      {
+        "t": "Generation passes",
+        "d": "Hundreds of candidates generated, then filtered to a usable selects reel."
+      },
+      {
+        "t": "Continuity fix",
+        "d": "Stabilisation, warp repair and re-timing so synthetic shots behave like real footage."
+      },
+      {
+        "t": "Grade & sound",
+        "d": "Unified cinematic grade plus designed ambience and a sparse score."
+      }
+    ],
+    "bts": "The opening shot exists in nineteen versions. The fourteenth — technically the worst render — is the one that made the film.",
+    "span": [
+      "12",
+      "7",
+      "5"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "chroma-drift",
+    "title": "Chroma Drift",
+    "cat": "ai-visual-lab",
+    "tags": [
+      "AI Images"
+    ],
+    "year": "2025",
+    "client": "Personal series",
+    "role": "Art Direction & Image Making",
+    "tools": [
+      "Midjourney",
+      "ComfyUI",
+      "Photoshop"
+    ],
+    "summary": "An ongoing study of colour, material and light generated at the edge of legibility.",
+    "lede": "Colour fields and impossible materials, prompted like photography and finished like painting.",
+    "overview": [
+      "Chroma Drift started as a daily discipline: one image, one material, one light source, every morning for a hundred days. The constraint was to never show the whole object — always the edge, the surface, the moment before recognition.",
+      "Raw generations were treated as negatives. Each final frame is a composite of several passes, retouched for banding, grain and colour accuracy so it holds up in print at poster scale."
+    ],
+    "quote": "Generated images get interesting the moment you stop accepting the first result.",
+    "process": [
+      {
+        "t": "Daily constraint",
+        "d": "One material, one light, one crop — a hundred mornings, no exceptions."
+      },
+      {
+        "t": "Prompt craft",
+        "d": "Camera, lens and stock language instead of adjectives to keep results photographic."
+      },
+      {
+        "t": "Compositing",
+        "d": "Multi-pass blending for colour accuracy and deliberate chromatic drift."
+      },
+      {
+        "t": "Print finish",
+        "d": "Grain, banding repair and soft-proofing for poster-scale output."
+      }
+    ],
+    "bts": "The failed renders — melted surfaces, broken geometry — became a second series shown alongside the clean ones.",
+    "span": [
+      "5",
+      "7",
+      "12"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "latent-garden",
+    "title": "Latent Garden",
+    "cat": "ai-visual-lab",
+    "tags": [
+      "Experiments"
+    ],
+    "year": "2026",
+    "client": "Lab / self-initiated",
+    "role": "Research & Motion",
+    "tools": [
+      "ComfyUI",
+      "Deforum",
+      "After Effects",
+      "TouchDesigner"
+    ],
+    "summary": "A latent-space walkthrough where botanical forms grow, mutate and dissolve in real time.",
+    "lede": "An experiment in moving a camera through a space that does not exist.",
+    "overview": [
+      "Latent Garden is a research piece: a continuous camera move through a botanical world that regenerates as it is travelled. Workflows were built in ComfyUI with interpolation between seed clusters so growth and decay read as one unbroken motion.",
+      "The final piece mixes generated motion with hand animation — particle overlays, depth holds and a beat-locked edit — to prove that generative footage can be directed rather than merely collected."
+    ],
+    "quote": "Every model has a temperament. The work starts when you learn to negotiate with it.",
+    "process": [
+      {
+        "t": "Workflow build",
+        "d": "Node graphs for interpolation, depth control and seed-to-seed morphing."
+      },
+      {
+        "t": "Seed mapping",
+        "d": "Clusters of seeds plotted so movement through space feels intentional."
+      },
+      {
+        "t": "Direction pass",
+        "d": "Hand-drawn overlays, particles and holds added over generated motion."
+      },
+      {
+        "t": "Edit & export",
+        "d": "Beat-locked assembly, noise management and multi-resolution exports."
+      }
+    ],
+    "bts": "The render farm was a laptop for three nights. Heat, not creativity, set the production schedule.",
+    "span": [
+      "7",
+      "5",
+      "12"
+    ],
+    "featured": false
+  },
+  {
+    "slug": "dust-and-light",
+    "title": "Dust & Light",
+    "cat": "documentary",
+    "tags": [
+      "Short Films"
+    ],
+    "year": "2025",
+    "client": "Crafted Documentary Series",
+    "role": "Direction, Edit & Colour",
+    "tools": [
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Adobe Audition"
+    ],
+    "summary": "A nine-minute documentary inside a third-generation letterpress workshop.",
+    "lede": "Nine minutes inside a workshop where ink, metal and habit have outlived three generations.",
+    "overview": [
+      "The film follows a single working week: setting type, pulling proofs, arguing about a client’s hyphenation. There is no narration — the machines and the hands carry the story, and the edit holds long enough for the audience to hear a room think.",
+      "Light was the structure. Morning shoots used one window and reflectors only; the grade kept warm highlights against cool shadow so dust in the air became visible punctuation between scenes."
+    ],
+    "quote": "Documentary is not about finding the truth on screen; it is about not getting in its way.",
+    "process": [
+      {
+        "t": "Research week",
+        "d": "Visits with no camera to learn the room, the routines and where the light falls."
+      },
+      {
+        "t": "Lean capture",
+        "d": "Two-person crew, available light and a single lens choice to stay invisible."
+      },
+      {
+        "t": "Silent assembly",
+        "d": "Cut without music first so structure rests on rhythm and natural sound."
+      },
+      {
+        "t": "Grade & sound",
+        "d": "Warm highlights, cool shadows, and a soundscape built from the workshop itself."
+      }
+    ],
+    "bts": "The press could not be stopped for takes — every shot was recorded against real production sound, which set the entire edit rhythm.",
+    "span": [
+      "7",
+      "12",
+      "5"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "terra-nova",
+    "title": "Terra Nova",
+    "cat": "documentary",
+    "tags": [
+      "Campaigns"
+    ],
+    "year": "2025",
+    "client": "Verdant Reforestation",
+    "role": "Creative Direction",
+    "tools": [
+      "Illustrator",
+      "After Effects",
+      "Premiere Pro",
+      "Photoshop"
+    ],
+    "summary": "A reforestation campaign connecting posters, film and social into one growing system.",
+    "lede": "A campaign that grows — one poster, one frame and one seedling at a time.",
+    "overview": [
+      "Verdant plants a forest a hectare at a time and needed a campaign that could grow with the numbers rather than shouting about them once. The system: every published asset adds one mark to a shared grid, and the grid becomes an image of the forest by year’s end.",
+      "Film, outdoor posters and social all share the same growth logic, so the campaign reads as a single accelerating gesture across every channel it touches."
+    ],
+    "quote": "A campaign should behave like the thing it is advocating for.",
+    "process": [
+      {
+        "t": "Core idea",
+        "d": "One mark per asset, accumulating into a shared yearly image."
+      },
+      {
+        "t": "Film",
+        "d": "Documentary-led 60s spot following a single planting season end to end."
+      },
+      {
+        "t": "Outdoor & print",
+        "d": "Poster series where each execution advances the growth grid."
+      },
+      {
+        "t": "Social system",
+        "d": "Templates that let the client publish without breaking the concept."
+      }
+    ],
+    "bts": "Half the footage came from volunteers’ phones — reframed, graded and cut alongside the main camera without apology.",
+    "span": [
+      "5",
+      "7",
+      "12"
+    ],
+    "featured": false
+  },
+  {
+    "slug": "set-notes",
+    "title": "Set Notes",
+    "cat": "documentary",
+    "tags": [
+      "Behind the Scenes"
+    ],
+    "year": "2026",
+    "client": "Studio archive",
+    "role": "Photography & Edit",
+    "tools": [
+      "Camera",
+      "Lightroom",
+      "Premiere Pro"
+    ],
+    "summary": "A behind-the-scenes archive of sets, screens and happy accidents from the last two years.",
+    "lede": "The making-of record: what the final frame never shows about how it got made.",
+    "overview": [
+      "Set Notes is an ongoing archive kept on every production — c-stands and cable on the floor, prompt screens mid-generation, marked-up print dummies, the coffee that fixed a broken third act.",
+      "It exists as an honest counterweight to the polished case studies on this site: proof that premium results come from iteration, mess and a lot of near misses."
+    ],
+    "quote": "Show the process and the work becomes believable; hide it and it becomes suspicious.",
+    "process": [
+      {
+        "t": "Capture habit",
+        "d": "Ten minutes at wrap, every shoot, no exceptions — the archive fills itself."
+      },
+      {
+        "t": "Selects",
+        "d": "Frames chosen for process truth rather than how flattering they look."
+      },
+      {
+        "t": "Edit & sequence",
+        "d": "Sequenced like a diary: project, problem, resolution, residue."
+      },
+      {
+        "t": "Publish",
+        "d": "Released as short notes alongside each finished case study."
+      }
+    ],
+    "bts": "This archive is the behind-the-scenes section of every project on this site — including the photographs of it being made.",
+    "span": [
+      "7",
+      "5",
+      "12"
+    ],
+    "featured": false
+  }
+]

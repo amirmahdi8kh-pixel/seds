@@ -1,0 +1,176 @@
+{
+  "heroStats": [
+    {
+      "v": "07",
+      "l": "Years creating"
+    },
+    {
+      "v": "60+",
+      "l": "Projects shipped"
+    },
+    {
+      "v": "04",
+      "l": "Disciplines"
+    },
+    {
+      "v": "12",
+      "l": "Countries served"
+    }
+  ],
+  "philosophy": [
+    {
+      "t": "Direction over decoration",
+      "d": "Concept first. If the idea cannot be said in one sentence, no amount of polish will save it."
+    },
+    {
+      "t": "Systems scale",
+      "d": "Grids, type scales and timing rules keep work consistent long after the launch adrenaline fades."
+    },
+    {
+      "t": "Motion with meaning",
+      "d": "Movement should explain hierarchy or emotion — never merely fill silence."
+    },
+    {
+      "t": "AI as material",
+      "d": "Generative tools are a new kind of camera: powerful, opinionated, and useless without direction."
+    }
+  ],
+  "skillCards": [
+    {
+      "h": "Design",
+      "items": [
+        [
+          "Art direction",
+          "7 yrs"
+        ],
+        [
+          "Poster & print",
+          "7 yrs"
+        ],
+        [
+          "Typography",
+          "6 yrs"
+        ],
+        [
+          "Brand systems",
+          "5 yrs"
+        ],
+        [
+          "Social formats",
+          "5 yrs"
+        ]
+      ]
+    },
+    {
+      "h": "Motion & Video",
+      "items": [
+        [
+          "Motion graphics",
+          "6 yrs"
+        ],
+        [
+          "Video editing",
+          "6 yrs"
+        ],
+        [
+          "Colour grading",
+          "4 yrs"
+        ],
+        [
+          "Reels & vertical",
+          "4 yrs"
+        ],
+        [
+          "Title sequences",
+          "3 yrs"
+        ]
+      ]
+    },
+    {
+      "h": "AI & Experiment",
+      "items": [
+        [
+          "AI filmmaking",
+          "3 yrs"
+        ],
+        [
+          "Image prompting",
+          "3 yrs"
+        ],
+        [
+          "Node workflows",
+          "2 yrs"
+        ],
+        [
+          "Upscaling & repair",
+          "2 yrs"
+        ],
+        [
+          "Creative research",
+          "ongoing"
+        ]
+      ]
+    },
+    {
+      "h": "Film & Story",
+      "items": [
+        [
+          "Documentary",
+          "4 yrs"
+        ],
+        [
+          "Campaign films",
+          "4 yrs"
+        ],
+        [
+          "Story structure",
+          "5 yrs"
+        ],
+        [
+          "Sound-first editing",
+          "3 yrs"
+        ],
+        [
+          "On-set direction",
+          "3 yrs"
+        ]
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "y": "2023 — Now",
+      "h": "Independent Creative Designer",
+      "p": "Design, motion and AI-driven film for cultural and commercial clients worldwide.",
+      "place": "Freelance / Studio of one"
+    },
+    {
+      "y": "2021 — 2023",
+      "h": "Senior Designer & Motion Lead",
+      "p": "Led visual systems, campaign films and social design for launching brands.",
+      "place": "Creative agency"
+    },
+    {
+      "y": "2019 — 2021",
+      "h": "Graphic Designer",
+      "p": "Posters, editorial layouts and identity work across print and screen.",
+      "place": "Design studio"
+    },
+    {
+      "y": "2018 — 2019",
+      "h": "Junior Designer / Intern",
+      "p": "Learned the grid, the deadline and the discipline of daily production.",
+      "place": "First studio"
+    }
+  ],
+  "clients": [
+    "Nocturne Festival",
+    "Aether Audio",
+    "Ferro Architects",
+    "Format Conference",
+    "Rova",
+    "Verdant",
+    "Lowbeam",
+    "Crafted Series"
+  ]
+}

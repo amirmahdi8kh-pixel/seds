@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000" width="1500" height="1000" preserveAspectRatio="xMidYMid slice">
+<defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+<radialGradient id="vig" cx="50%" cy="50%" r="78%"><stop offset="50%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity="0.55"/></radialGradient>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A0A10"/><stop offset="1" stop-color="#151021"/></linearGradient>
+<filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="140"/></filter>
+</defs>
+<rect width="1500" height="1000" fill="url(#bg)"/><ellipse cx="1502.2330233477987" cy="827.8294171672314" rx="349.1753828432411" ry="285.17598528414965" fill="#7B5CFF" opacity="0.41" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="1203.104690881446" cy="461.2679469864816" rx="493.51993502117693" ry="352.31274293735623" fill="#FF5A2B" opacity="0.43" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="1452.6660462375733" cy="862.9651066381484" rx="445.66640141420066" ry="199.70809544436634" fill="#41E0FF" opacity="0.52" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="1331.8129240069538" cy="779.6047787414864" rx="347.0936868991703" ry="237.18972806818783" fill="#151021" opacity="0.62" filter="url(#soft)" style="mix-blend-mode:screen"/><ellipse cx="1408.7245474336669" cy="637.1119339484721" rx="354.5722752995789" ry="359.29783121682703" fill="#7B5CFF" opacity="0.44" filter="url(#soft)" style="mix-blend-mode:screen"/><circle cx="895.1580931199716" cy="790.1135614141823" r="440.45568879693747" fill="none" stroke="#7B5CFF" stroke-width="3" opacity="0.75"/>
+<rect width="1500" height="1000" fill="url(#vig)"/>
+<rect width="1500" height="1000" filter="url(#grain)" opacity="0.17" style="mix-blend-mode:overlay"/>
+</svg>
