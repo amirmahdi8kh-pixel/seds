@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin — Nima Vale Portfolio</title>
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="assets/css/core.css">
+</head>
+<body>
+  <main class="container" style="margin-top: clamp(8rem, 20vh, 20rem); max-width: 420px;">
+    <section class="section--tight">
+      <div class="stack">
+        <h2 class="display-m">Administration</h2>
+        <p class="lede" style="margin-inline: 0; max-width: none; color: var(--muted);">Manage your portfolio content</p>
+      </div>
+      <form class="stack" style="max-width: 360px; gap: 1.5rem;" id="loginForm">
+        <div>
+          <label class="upper" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; display: block; margin-bottom: 0.5rem;">Email</label>
+          <input type="email" name="email" required
+            style="width: 100%; padding: 1rem 1.25rem; border: 1px solid var(--line); border-radius: 0; font-family: var(--font-sans); font-size: 1rem; color: var(--ink); background: var(--bg-2);"
+            placeholder="hello@nimavale.studio">
+        </div>
+        <div>
+          <label class="upper" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; display: block; margin-bottom: 0.5rem;">Password</label>
+          <input type="password" name="password" required
+            style="width: 100%; padding: 1rem 1.25rem; border: 1px solid var(--line); border-radius: 0; font-family: var(--font-sans); font-size: 1rem; color: var(--ink); background: var(--bg-2);"
+            placeholder="password">
+        </div>
+        <button type="submit" class="btn--solid w-full" style="justify-content: center;">
+          Sign in
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
