@@ -3,214 +3,358 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Editor — Nima Vale Portfolio</title>
+  <title>Visual Editor — Nima Vale Portfolio</title>
   <link rel="stylesheet" href="../assets/fonts.css">
   <link rel="stylesheet" href="../assets/css/core.css">
 </head>
 <body>
-  <main class="container">
-    <div class="flex" style="min-height: 100vh;">
-      <!-- Left sidebar -->
-      <nav class="sidebar" style="flex: 0 0 260px; background: var(--bg-2);">
-        <ul class="sidebar-nav" style="padding: clamp(2rem, 8vh, 3rem) 1.5rem;">
-          <li>
-            <a href="#" class="sidebar-nav__item active" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-radius: 0; color: var(--ink); font-weight: 500;">
-              <svg width="20" height="20" viewBox="0 0 24 24" style="color: var(--accent);" aria-hidden="true"><path d="M3 13h2v5H3v-5zM3 8h2v8H3V8zM13 3h5v2h-5V3zM8 3h2v6H8V3zM13 13h5v2h-5v-5zM8 13h2v8H8v-5z"/></svg>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#" class="sidebar-nav__item" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-radius: 0; color: var(--muted); font-weight: 500;">
-              <svg width="20" height="20" viewBox="0 0 24 24" style="color: currentColor;" aria-hidden="true"><path d="M3 13h2v5H3v-5zM3 8h2v8H3V8zM13 3h5v2h-5V3zM8 3h2v6H8V3zM13 13h5v2h-5v-5zM8 13h2v8H8v-5z"/></svg>
-              Graphic Design
-            </a>
-          </li>
-          <li>
-            <a href="#" class="sidebar-nav__item" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-radius: 0; color: var(--muted); font-weight: 500;">
-              <svg width="20" height="20" viewBox="0 0 24 24" style="color: currentColor;" aria-hidden="true"><path d="M3 13h2v5H3v-5zM3 8h2v8H3V8zM13 3h5v2h-5V3zM8 3h2v6H8V3zM13 13h5v2h-5v-5zM8 13h2v8H8v-5z"/></svg>
-              Posters
-            </a>
-          </li>
-          <li>
-            <a href="#" class="sidebar-nav__item" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-radius: 0; color: var(--muted); font-weight: 500;">
-              <svg width="20" height="20" viewBox="0 0 24 24" style="color: currentColor;" aria-hidden="true"><path d="M3 13h2v5H3v-5zM3 8h2v8H3V8zM13 3h5v2h-5V3zM8 3h2v6H8V3zM13 13h5v2h-5v-5zM8 13h2v8H8v-5z"/></svg>
-              Video Editing
-            </a>
-          </li>
-          <li>
-            <a href="#" class="sidebar-nav__item" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-radius: 0; color: var(--muted); font-weight: 500;">
-              <svg width="20" height="20" viewBox="0 0 24 24" style="color: currentColor;" aria-hidden="true"><path d="M3 13h2v5H3v-5zM3 8h2v8H3V8zM13 3h5v2h-5V3zM8 3h2v6H8V3zM13 13h5v2h-5v-5zM8 13h2v8H8v-5z"/></svg>
-              AI Videos
-            </a>
-          </li>
-          <li>
-            <a href="#" class="sidebar-nav__item" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-radius: 0; color: var(--muted); font-weight: 500;">
-              <svg width="20" height="20" viewBox="0 0 24 24" style="color: currentColor;" aria-hidden="true"><path d="M3 13h2v5H3v-5zM3 8h2v8H3V8zM13 3h5v2h-5V3zM8 3h2v6H8V3zM13 13h5v2h-5v-5zM8 13h2v8H8v-5z"/></svg>
-              Collaboration
-            </a>
-          </li>
-          <li>
-            <a href="#" class="sidebar-nav__item" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-radius: 0; color: var(--muted); font-weight: 500;">
-              <svg width="20" height="20" viewBox="0 0 24 24" style="color: currentColor;" aria-hidden="true"><path d="M3 13h2v5H3v-5zM3 8h2v8H3V8zM13 3h5v2h-5V3zM8 3h2v6H8V3zM13 13h5v2h-5v-5zM8 13h2v8H8v-5z"/></svg>
-              Appearance
-            </a>
-          </li>
-          <li>
-            <a href="#" class="sidebar-nav__item" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-radius: 0; color: var(--muted); font-weight: 500;">
-              <svg width="20" height="20" viewBox="0 0 24 24" style="color: currentColor;" aria-hidden="true"><path d="M3 13h2v5H3v-5zM3 8h2v8H3V8zM13 3h5v2h-5V3zM8 3h2v6H8V3zM13 13h5v2h-5v-5zM8 13h2v8H8v-5z"/></svg>
-              Media
-            </a>
-          </li>
-        </ul>
-      </nav>
+  <main style="min-height: 100vh; margin: 0; padding: 0; overflow: hidden; font-family: var(--font-sans); font-size: clamp(1rem, 0.96rem + 0.2vw, 1.075rem); line-height: 1.65; color: var(--bg); background: var(--bg);">
+    <!-- Top toolbar -->
+    <header style="
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    ">
+      <div style="
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      ">
+        <!-- Back to Dashboard -->
+        <a href="/admin/dashboard.html" style="
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          border: 1px solid var(--line);
+          border-radius: 0;
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: var(--muted);
+          text-decoration: none;
+          transition: color 0.3s, background 0.3s;
+        "hover{background: var(--ink);color: var(--bg)}
+        ">
+          <svg width="16" height="16" viewBox="0 0 24 24" style="color: var(--muted);" aria-hidden="true"><path d="M15 18l-5-5 5-5 5 5-5 5z"/></svg>
+          Back to Dashboard
+        </a>
 
-      <!-- Main area -->
-      <main class="main-content" style="flex: 1; padding: clamp(2rem, 8vh, 3rem);">
-        <section class="section--tight">
-          <div class="stack">
-            <h2 class="display-m">Visual Editor</h2>
-            <p class="lede" style="color: var(--muted); margin-bottom: 2rem;">Website editing interface</p>
+        <!-- Current page selector -->
+        <select style="
+          font: inherit;
+          padding: 0.5rem 1rem;
+          border: 1px solid var(--line);
+          border-radius: 0;
+          background: var(--bg-2);
+          color: var(--ink);
+          min-width: 150px;
+        ">
+          <option value="">— Select Page/Section —</option>
+          <option value="index.html">Home</option>
+          <option value="portfolio/graphic-design.html">Graphic Design</option>
+          <option value="portfolio/posters.html">Posters</option>
+          <option value="portfolio/motion-video.html">Video Editing</option>
+          <option value="portfolio/ai-visual-lab.html">AI Videos</option>
+          <option value="index.html#contact">Collaboration</option>
+        </select>
 
-            <div class="stack" style="gap: 1.5rem; margin-top: 2rem;">
-              <button class="btn--solid" style="align-self: start;" id="editModeBtn">
-                Edit Mode
-              </button>
+        <!-- Preview size buttons -->
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn" style="font: inherit; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg-2); color: var(--ink); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem;">Desktop</button>
+          <button class="btn" style="font: inherit; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg-2); color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem;">Tablet</button>
+          <button class="btn" style="font: inherit; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg-2); color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem;">Mobile</button>
+        </div>
 
-              <div class="stat" style="width: 100%; background: var(--bg-2); padding: 2rem; border-radius: 0; text-align: center;">
-                <div style="font-size: 4rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">🖥️</div>
-                <div style="color: var(--muted); font-size: 1rem;">Live preview area</div>
-              </div>
-            </div>
+        <!-- Edit Mode toggle -->
+        <button class="btn--solid" style="font: inherit; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 0; background: var(--ink); color: var(--bg); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem;" id="editModeBtn">
+          Edit Mode ON
+        </button>
 
-            <iframe class="iframe-preview" style="width: 100%; height: 80vh; border: 1px solid var(--line); border-radius: 0; margin-top: 2rem; background: var(--bg);" sandbox="allow-scripts allow-forms allow-popups-to-escape-sandbox" scrolling="auto" title="Website preview" src="https://seds.amirmahdi-8kh.workers.dev"></iframe>
-          </div>
-        </section>
-      </main>
-    </div>
-  </main>
+        <!-- Save / Publish -->
+        <button class="btn--solid" style="font: inherit; padding: 0.5rem 1rem; border: 1px solid var(--accent); border-radius: 0; background: var(--accent); color: var(--bg); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-left: 1rem;">Save</button>
+        <button class="btn" style="font: inherit; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg-2); color: var(--ink); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-left: 0.5rem;">Publish</button>
+      </div>
+    </header>
 
-  <script>
-    // Element editing functionality
-    let isEditMode = false;
-    let selectedElement = null;
-    
-    // Toggle Edit Mode
-    const editModeBtn = document.getElementById('editModeBtn');
-    editModeBtn.addEventListener('click', () => {
-      isEditMode = !isEditMode;
-      editModeBtn.textContent = isEditMode ? 'Exit Edit Mode' : 'Edit Mode';
-      const iframe = document.querySelector('.iframe-preview');
-      if (isEditMode) {
-        iframe.style.outline = '2px solid var(--accent)';
-        iframe.style.outlineOffset = '2px';
-        iframe.contentDocument.body.style.cursor = 'crosshair';
-        // Enable element selection
-        setupElementSelection(iframe);
-      } else {
-        iframe.style.outline = 'none';
-        iframe.contentDocument.body.style.cursor = 'default';
-        resetElementSelection(iframe);
+    <!-- Website iframe -->
+    <iframe style="
+      width: 100%;
+      height: 100vh;
+      border: none;
+      background: var(--bg);
+      overflow-y: auto;
+    " name="site-preview" src="/" sandbox="allow-scripts allow-forms" title="Website preview" id="site-preview"></iframe>
+
+    <!-- Right inspector panel (hidden until element selected) -->
+    <aside style="
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 320px;
+      max-width: 320px;
+      background: var(--bg);
+      border-left: 1px solid var(--line);
+      z-index: 50;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
+      transform: translateX(320px);
+    " id="inspector" aria-label="Element inspector">
+      <div style="
+        background: var(--accent);
+        color: var(--bg);
+        padding: 1rem 1.5rem;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+      ">
+        Element Inspector
+      </div>
+      <div style="padding: 1.5rem;">
+        <div style="display: none; align-items: center; justify-content: center; height: 100px; border: 1px dashed var(--line); margin-bottom: 1rem;;">
+          <svg width="40" height="40" viewBox="0 0 24 24" style="color: var(--muted);" aria-hidden="true"><path d="M10 20v-6h6v6h5v12h-5v6h-6v-6h-5v-12h5vzM17 3H7c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 3v6c0 1.66 2.69 3 3.5 3.5v6h2v-6H7z"/></svg>
+          <span>Click an element to edit</span>
+        </span>
+      </div>
+      <div id="inspector-content" style="display: none;">
+        <!-- Inspector content will be injected here -->
+      </div>
+    </aside>
+
+    <script>
+      // ==================== VARIABLES ====================
+      let isEditMode = false;
+      let selectedElement = null;
+      let editingElement = null;
+      const iframe = document.getElementById('site-preview');
+      const inspector = document.getElementById('inspector');
+      const inspectorContent = document.getElementById('inspector-content');
+      const editModeBtn = document.getElementById('editModeBtn');
+      
+      // ==================== IFRAME LOAD ====================
+      iframe.addEventListener('load', () => {
+        // iframe is same-origin (/), so we can access DOM directly
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        
+        // Make the body editable in non-edit mode for preview
+        doc.body.setAttribute('spellcheck', 'false');
+      });
+      
+      // ==================== EDIT MODE TOGGLE ====================
+      editModeBtn.addEventListener('click', () => {
+        isEditMode = !isEditMode;
+        editModeBtn.textContent = isEditMode ? 'Edit Mode OFF' : 'Edit Mode ON';
+        
+        if (isEditMode) {
+          // Enter edit mode
+          iframe.style.outline = '2px solid var(--accent)';
+          iframe.style.outlineOffset = '4px';
+          iframe.contentDocument.body.style.cursor = 'crosshair';
+          iframe.contentDocument.body.style.userSelect = 'none';
+          // Enable element clicking
+          setupElementSelection(iframe);
+          inspector.style.transform = 'translateX(0)';
+        } else {
+          // Exit edit mode
+          iframe.style.outline = 'none';
+          iframe.style.outlineOffset = '0px';
+          iframe.contentDocument.body.style.cursor = 'default';
+          iframe.contentDocument.body.style.userSelect = '';
+          resetElementSelection(iframe);
+          inspector.style.transform = 'translateX(320px)';
+        }
+      });
+      
+      // ==================== ELEMENT SELECTION ====================
+      function setupElementSelection(iframe) {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        let clickTimeout = null;
+        
+        doc.addEventListener('click', (e) => {
+          // Deselect previous element
+          if (selectedElement) {
+            selectedElement.style.outline = '';
+            selectedElement.style.boxShadow = '';
+            selectedElement = null;
+          }
+          
+          const target = e.target.closest('*');
+          if (!target) return;
+          
+          selectedElement = target;
+          
+          // Highlight selected element
+          selectedElement.style.outline = '2px solid var(--accent)';
+          selectedElement.style.boxShadow = '0 0 0 4px var(--accent)';
+          editingElement = selectedElement;
+          
+          // Show inspector with element-specific controls
+          showInspector(selectedElement);
+          
+          // Prevent default navigation on click in edit mode
+          e.preventDefault();
+          e.stopPropagation();
+        });
       }
-    });
-    
-    // Setup element selection in iframe
-    function setupElementSelection(iframe) {
-      const doc = iframe.contentDocument || iframe.contentWindow.document;
-      // Allow clicking on elements
-      doc.body.style.userSelect = 'none';
-      doc.addEventListener('click', (e) => {
-        // Deselect previous element
+      
+      function resetElementSelection(iframe) {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        
         if (selectedElement) {
           selectedElement.style.outline = '';
           selectedElement.style.boxShadow = '';
+          selectedElement = null;
+          editingElement = null;
         }
-        selectedElement = e.target.closest('*');
-        if (selectedElement && selectedElement.tagName) {
-          // Highlight selected element
-          selectedElement.style.outline = '2px solid var(--accent)';
-          selectedElement.style.boxShadow = '0 0 0 2px var(--accent)';
-          style.selectedElement = selectedElement;
-          showEditingPanel(selectedElement);
+        
+        // Hide inspector
+        inspector.style.transform = 'translateX(320px)';
+        inspectorContent.innerHTML = '';
+        inspectorContent.style.display = 'none';
+        
+        // Reset body styles
+        doc.body.style.userSelect = '';
+        doc.body.style.cursor = 'default';
+      }
+      
+      function showInspector(element) {
+        inspector.style.transform = 'translateX(0)';
+        inspectorContent.style.display = 'block';
+        
+        // Build inspector based on element type
+        const tag = element.tagName.toLowerCase();
+        const computed = iframe.contentDocument ? iframe.contentDocument.defaultView.getComputedStyle(element, null) : {};
+        
+        let html = '';
+        
+        if (tag === 'img') {
+          // Image element
+          const src = element.getAttribute('src') || '';
+          const alt = element.getAttribute('alt') || '';
+          html = `
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Image Preview</label>
+              <img src="${src}" style="width: 100%; max-width: 200px; height: auto; border: 1px solid var(--line); border-radius: 0; object-fit: cover;" alt="${alt}">
+              <input type="text" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; margin-top: 0.5rem; background: var(--bg); color: var(--ink);" placeholder="Image URL" value="${src}">
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Alt Text</label>
+              <input type="text" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; margin-top: 0.5rem; background: var(--bg); color: var(--ink);" value="${alt}">
+            </div>
+          `;
+        } else if (tag === 'a') {
+          // Link/button element
+          const text = element.innerText || '';
+          const href = element.getAttribute('href') || '';
+          const target = element.getAttribute('target') || '_self';
+          html = `
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Link Text</label>
+              <input type="text" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; margin-top: 0.5rem; background: var(--bg); color: var(--ink);" value="${text}">
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">URL</label>
+              <input type="url" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; margin-top: 0.5rem; background: var(--bg); color: var(--ink);" value="${href}">
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Target</label>
+              <select style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; margin-top: 0.5rem; background: var(--bg); color: var(--ink);">
+                <option value="_self">${_self}</option>
+                <option value="_blank">${_blank}</option>
+              </select>
+            </div>
+          `;
+        } else if (tag === 'span' || tag === 'div' || tag === 'p' || tag === 'h1' || tag === 'h2' || tag === 'h3' || tag === 'h4') {
+          // Text element
+          const text = element.innerText || '';
+          const fontFamily = computed.fontFamily || 'var(--font-sans)';
+          const fontSize = computed.fontSize || '1rem';
+          const fontWeight = computed.fontWeight || '400';
+          const color = computed.color || 'var(--ink)';
+          const textAlign = computed.textAlign || 'left';
+          
+          html = `
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Text Content</label>
+              <textarea style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; margin-top: 0.5rem; background: var(--bg); color: var(--ink); font-family: var(--font-sans);" rows="3" placeholder="Text content...">${text}</textarea>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Font Family</label>
+              <input type="text" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; margin-top: 0.5rem; background: var(--bg); color: var(--ink);" value="${fontFamily}" placeholder="e.g. Inter, serif">
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Font Size</label>
+              <input type="text" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; margin-top: 0.5rem; background: var(--bg); color: var(--ink);" value="${fontSize}" placeholder="e.g. 1rem">
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Font Weight</label>
+              <select style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; margin-top: 0.5rem; background: var(--bg); color: var(--ink);">
+                <option value="400">Normal (400)</option>
+                <option value="700">Bold (700)</option>
+                <option value="900">Black (900)</option>
+              </select>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Text Color</label>
+              <input type="color" style="width: 100%; height: 2rem; padding: 0rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg);" value="${color}" />
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Text Alignment</label>
+              <select style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; margin-top: 0.5rem; background: var(--bg); color: var(--ink);">
+                <option value="left">Left</option>
+                <option value="center">Center</option>
+                <option value="right">Right</option>
+              </select>
+            </div>
+          `;
+        } else {
+          // Container/section element
+          const bgColor = computed.backgroundColor || 'transparent';
+          const padding = computed.padding || '0';
+          const margin = computed.margin || '0';
+          
+          html = `
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Background Color</label>
+              <input type="color" style="width: 100%; height: 2rem; padding: 0rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg);" value="${bgColor.replace('rgba(', '').replace(')', '').replace(/ /g, '').replace(/opacity[^)]*/, '')}" />
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Padding</label>
+              <input type="text" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; margin-top: 0.5rem; background: var(--bg); color: var(--ink);" value="${padding}" placeholder="e.g. 1rem 2rem">
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.25rem;">Margin</label>
+              <input type="text" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; margin-top: 0.5rem; background: var(--bg); color: var(--ink);" value="${margin}" placeholder="e.g. 1rem">
+            </div>
+          `;
+        }
+        
+        inspectorContent.innerHTML = html;
+      }
+      
+      // ==================== CLICK OUTSIDE TO CLOSE ====================
+      document.addEventListener('click', (e) => {
+        // Close inspector if clicking outside the selected element
+        if (selectedElement && !selectedElement.contains(e.target) && e.target !== editModeBtn) {
+          resetElementSelection(iframe);
         }
       });
-    }
-    
-    // Reset element selection
-    function resetElementSelection(iframe) {
-      const doc = iframe.contentDocument || iframe.contentWindow.document;
-      if (selectedElement) {
-        selectedElement.style.outline = '';
-        selectedElement.style.boxShadow = '';
-        selectedElement = null;
-      }
-      hideEditingPanel();
-      doc.body.style.userSelect = '';
-    }
-    
-    // Simple editing panel
-    const editingPanel = document.createElement('div');
-    editingPanel.style.position = 'fixed';
-    editingPanel.style.top = '20px';
-    editingPanel.style.right = '20px';
-    editingPanel.style.width = '280px';
-    editingPanel.style.background = 'var(--bg-2)';
-    editingPanel.style.border = '1px solid var(--line)';
-    editingPanel.style.borderRadius = '0';
-    editingPanel.style.padding = '1rem';
-    editingPanel.style.zIndex = '1000';
-    editingPanel.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
-    editingPanel.innerHTML = `
-      <div style="background: var(--accent); color: var(--bg); padding: 0.5rem 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem;">
-        Editing Element
-      </div>
-      <div style="margin-bottom: 1rem;">
-        <label style="display: block; font-size: 0.75rem; margin-bottom: 0.25rem;">HTML</label>
-        <textarea style="width: 100%; height: 80px; font-family: var(--font-mono); font-size: 0.7rem; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg); color: var(--ink); resize: vertical;"><!-- selected element --></textarea>
-      </div>
-      <div style="margin-bottom: 1rem;">
-        <label style="display: block; font-size: 0.75rem; margin-bottom: 0.25rem;">Text Content</label>
-        <input type="text" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg); color: var(--ink);" placeholder="Edit text...">
-      </div>
-      <div style="margin-bottom: 1rem;">
-        <label style="display: block; font-size: 0.75rem; margin-bottom: 0.25rem;">Image URL</label>
-        <input type="url" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg); color: var(--ink);" placeholder="https://example.com/image.png">
-      </div>
-      <div style="margin-bottom: 1rem;">
-        <label style="display: block; font-size: 0.75rem; margin-bottom: 0.25rem;">Background Color</label>
-        <input type="color" style="width: 100%; height: 2rem; padding: 0rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg);" value="#e8452b">
-      </div>
-      <div style="margin-bottom: 1rem;">
-        <label style="display: block; font-size: 0.75rem; margin-bottom: 0.25rem;">Link URL</label>
-        <input type="url" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg); color: var(--ink);" placeholder="https://example.com">
-      </div>
-      <button style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; background: var(--accent); color: var(--bg); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem;">Apply Changes</button>
-    `;
-    document.body.appendChild(editingPanel);
-    
-    function showEditingPanel(element) {
-      editingPanel.style.display = 'block';
-      // Try to extract content from the selected element
-      const textInput = editingPanel.querySelector('input[type="text"]');
-      const colorInput = editingPanel.querySelector('input[type="color"]');
-      if (element.innerText) {
-        textInput.value = element.innerText.substring(0, 200);
-      }
-      // If it's an element with a background color, extract it
-      const computedStyle = window.getComputedStyle ? window.getComputedStyle(element, null) : {};
-      const bg = computedStyle.backgroundColor || 'var(--accent)';
-      colorInput.value = /rgb\((\d+),\s*(\d+),\s*(\d+)\)/.test(bg) ? '#' + bg.match(/\d+/g).slice(1).join('') : bg;
-    }
-    
-    function hideEditingPanel() {
-      editingPanel.style.display = 'none';
-    }
-    
-    // Close editing panel when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!editingPanel.contains(e.target) && !selectedElement.contains(e.target)) {
-        hideEditingPanel();
-      }
-    });
-  </script>
+      
+      // Close inspector when clicking outside the iframe area too
+      document.addEventListener('click', (e) => {
+        if (isEditMode && e.target !== iframe && !e.target.closest('#inspector')) {
+          resetElementSelection(iframe);
+        }
+      });
+    </script>
+  </main>
 </body>
 </html>
