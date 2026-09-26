@@ -77,18 +77,140 @@
               </button>
 
               <div class="stat" style="width: 100%; background: var(--bg-2); padding: 2rem; border-radius: 0; text-align: center;">
-                <div style="font-size: 4rem; font-weight: 700; color: var(--acct); margin-bottom: 0.5rem;">🖥️</div>
+                <div style="font-size: 4rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">🖥️</div>
                 <div style="color: var(--muted); font-size: 1rem;">Live preview area</div>
               </div>
             </div>
 
-            <iframe class="iframe-preview" style="width: 100%; height: 80vh; border: 1px solid var(--line); border-radius: 0; margin-top: 2rem; background: var(--bg);" sandbox="allow-scripts allow-forms" scrolling="auto" title="Website preview"></iframe>
+            <iframe class="iframe-preview" style="width: 100%; height: 80vh; border: 1px solid var(--line); border-radius: 0; margin-top: 2rem; background: var(--bg);" sandbox="allow-scripts allow-forms allow-popups-to-escape-sandbox" scrolling="auto" title="Website preview" src="http://localhost:4173"></iframe>
           </div>
         </section>
       </main>
     </div>
   </main>
 
-  <script src="../assets/js/main.js" defer></script>
+  <script>
+    // Element editing functionality
+    let isEditMode = false;
+    let selectedElement = null;
+    
+    // Toggle Edit Mode
+    const editModeBtn = document.getElementById('editModeBtn');
+    editModeBtn.addEventListener('click', () => {
+      isEditMode = !isEditMode;
+      editModeBtn.textContent = isEditMode ? 'Exit Edit Mode' : 'Edit Mode';
+      const iframe = document.querySelector('.iframe-preview');
+      if (isEditMode) {
+        iframe.style.outline = '2px solid var(--accent)';
+        iframe.style.outlineOffset = '2px';
+        iframe.contentDocument.body.style.cursor = 'crosshair';
+        // Enable element selection
+        setupElementSelection(iframe);
+      } else {
+        iframe.style.outline = 'none';
+        iframe.contentDocument.body.style.cursor = 'default';
+        resetElementSelection(iframe);
+      }
+    });
+    
+    // Setup element selection in iframe
+    function setupElementSelection(iframe) {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      // Allow clicking on elements
+      doc.body.style.userSelect = 'none';
+      doc.addEventListener('click', (e) => {
+        // Deselect previous element
+        if (selectedElement) {
+          selectedElement.style.outline = '';
+          selectedElement.style.boxShadow = '';
+        }
+        selectedElement = e.target.closest('*');
+        if (selectedElement && selectedElement.tagName) {
+          // Highlight selected element
+          selectedElement.style.outline = '2px solid var(--accent)';
+          selectedElement.style.boxShadow = '0 0 0 2px var(--accent)';
+          style.selectedElement = selectedElement;
+          showEditingPanel(selectedElement);
+        }
+      });
+    }
+    
+    // Reset element selection
+    function resetElementSelection(iframe) {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      if (selectedElement) {
+        selectedElement.style.outline = '';
+        selectedElement.style.boxShadow = '';
+        selectedElement = null;
+      }
+      hideEditingPanel();
+      doc.body.style.userSelect = '';
+    }
+    
+    // Simple editing panel
+    const editingPanel = document.createElement('div');
+    editingPanel.style.position = 'fixed';
+    editingPanel.style.top = '20px';
+    editingPanel.style.right = '20px';
+    editingPanel.style.width = '280px';
+    editingPanel.style.background = 'var(--bg-2)';
+    editingPanel.style.border = '1px solid var(--line)';
+    editingPanel.style.borderRadius = '0';
+    editingPanel.style.padding = '1rem';
+    editingPanel.style.zIndex = '1000';
+    editingPanel.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+    editingPanel.innerHTML = `
+      <div style="background: var(--accent); color: var(--bg); padding: 0.5rem 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem;">
+        Editing Element
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <label style="display: block; font-size: 0.75rem; margin-bottom: 0.25rem;">HTML</label>
+        <textarea style="width: 100%; height: 80px; font-family: var(--font-mono); font-size: 0.7rem; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg); color: var(--ink); resize: vertical;"><!-- selected element --></textarea>
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <label style="display: block; font-size: 0.75rem; margin-bottom: 0.25rem;">Text Content</label>
+        <input type="text" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg); color: var(--ink);" placeholder="Edit text...">
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <label style="display: block; font-size: 0.75rem; margin-bottom: 0.25rem;">Image URL</label>
+        <input type="url" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg); color: var(--ink);" placeholder="https://example.com/image.png">
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <label style="display: block; font-size: 0.75rem; margin-bottom: 0.25rem;">Background Color</label>
+        <input type="color" style="width: 100%; height: 2rem; padding: 0rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg);" value="#e8452b">
+      </div>
+      <div style="margin-bottom: 1rem;">
+        <label style="display: block; font-size: 0.75rem; margin-bottom: 0.25rem;">Link URL</label>
+        <input type="url" style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg); color: var(--ink);" placeholder="https://example.com">
+      </div>
+      <button style="width: 100%; padding: 0.5rem; border: 1px solid var(--line); border-radius: 0; background: var(--accent); color: var(--bg); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem;">Apply Changes</button>
+    `;
+    document.body.appendChild(editingPanel);
+    
+    function showEditingPanel(element) {
+      editingPanel.style.display = 'block';
+      // Try to extract content from the selected element
+      const textInput = editingPanel.querySelector('input[type="text"]');
+      const colorInput = editingPanel.querySelector('input[type="color"]');
+      if (element.innerText) {
+        textInput.value = element.innerText.substring(0, 200);
+      }
+      // If it's an element with a background color, extract it
+      const computedStyle = window.getComputedStyle ? window.getComputedStyle(element, null) : {};
+      const bg = computedStyle.backgroundColor || 'var(--accent)';
+      colorInput.value = /rgb\((\d+),\s*(\d+),\s*(\d+)\)/.test(bg) ? '#' + bg.match(/\d+/g).slice(1).join('') : bg;
+    }
+    
+    function hideEditingPanel() {
+      editingPanel.style.display = 'none';
+    }
+    
+    // Close editing panel when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!editingPanel.contains(e.target) && !selectedElement.contains(e.target)) {
+        hideEditingPanel();
+      }
+    });
+  </script>
 </body>
 </html>
