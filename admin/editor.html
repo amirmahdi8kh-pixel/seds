@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Visual Editor — Nima Vale Portfolio</title>
+  <title>Visual Editor â€” Nima Vale Portfolio</title>
   <link rel="stylesheet" href="../assets/fonts.css">
   <link rel="stylesheet" href="../assets/css/core.css">
 </head>
@@ -57,7 +57,7 @@
           color: var(--ink);
           min-width: 150px;
         ">
-          <option value="">— Select Page/Section —</option>
+          <option value="">â€” Select Page/Section â€”</option>
           <option value="index.html">Home</option>
           <option value="portfolio/graphic-design.html">Graphic Design</option>
           <option value="portfolio/posters.html">Posters</option>
@@ -91,7 +91,7 @@
       border: none;
       background: var(--bg);
       overflow-y: auto;
-    " name="site-preview" src="/" sandbox="allow-scripts allow-forms" title="Website preview" id="site-preview"></iframe>
+    " name="site-preview" src="/" title="Website preview" id="site-preview"></iframe>
 
     <!-- Right inspector panel (hidden until element selected) -->
     <aside style="
@@ -146,6 +146,14 @@
         
         // Make the body editable in non-edit mode for preview
         doc.body.setAttribute('spellcheck', 'false');
+      // Trigger reveal animations for data-reveal elements
+      const reveals = doc.querySelectorAll('[data-reveal]');
+      reveals.forEach((el, i) => {
+        const delay = i * 0.1;
+        setTimeout(() => {
+          el.classList.add('is-in');
+        }, delay * 1000);
+      });
       });
       
       // ==================== EDIT MODE TOGGLE ====================
