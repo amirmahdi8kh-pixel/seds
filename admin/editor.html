@@ -131,13 +131,20 @@
 
     <script>
       // ==================== VARIABLES ====================
-      let isEditMode = false;
-      let selectedElement = null;
-      let editingElement = null;
+      // State is now managed by EditorState module; these are kept in sync
+      // for backward compatibility with existing logic.
       const iframe = document.getElementById('site-preview');
       const inspector = document.getElementById('inspector');
       const inspectorContent = document.getElementById('inspector-content');
       const editModeBtn = document.getElementById('editModeBtn');
+      
+      // Sync local vars with EditorState on init (called on DOMContentLoaded)
+      const es = window.__peEditorState;
+      if (es) {
+        isEditMode = es.isEditMode;
+        selectedElement = es.selectedElement ? document.querySelector(`[data-editor-id="${es.selectedElement}"]`) : null;
+        editingElement = es.editingElement ? document.querySelector(`[data-editor-id="${es.editingElement}"]`) : null;
+      }
       
       // ==================== IFRAME LOAD ====================
       iframe.addEventListener('load', () => {
@@ -154,10 +161,13 @@
           el.classList.add('is-in');
         }, delay * 1000);
       });
+      // Sync data-editor-id map so newly loaded elements are findable
+      EditorState._onIframeLoad(iframe);
       });
       
       // ==================== EDIT MODE TOGGLE ====================
       editModeBtn.addEventListener('click', () => {
+        const wasEditMode = isEditMode;
         isEditMode = !isEditMode;
         editModeBtn.textContent = isEditMode ? 'Edit Mode OFF' : 'Edit Mode ON';
         
@@ -170,6 +180,8 @@
           // Enable element clicking
           setupElementSelection(iframe);
           inspector.style.transform = 'translateX(0)';
+          // Update EditorState
+          EditorState.toggleEditMode();
         } else {
           // Exit edit mode
           iframe.style.outline = 'none';
@@ -178,6 +190,8 @@
           iframe.contentDocument.body.style.userSelect = '';
           resetElementSelection(iframe);
           inspector.style.transform = 'translateX(320px)';
+          // Update EditorState
+          EditorState.toggleEditMode();
         }
       });
       
@@ -187,22 +201,21 @@
         let clickTimeout = null;
         
         doc.addEventListener('click', (e) => {
-          // Deselect previous element
-          if (selectedElement) {
-            selectedElement.style.outline = '';
-            selectedElement.style.boxShadow = '';
-            selectedElement = null;
-          }
+          // Deselect previous element through EditorState
+          EditorState.deselectElement(iframe);
           
           const target = e.target.closest('*');
           if (!target) return;
           
-          selectedElement = target;
+          // Assign a stable data-editor-id and update state
+          const editorId = EditorState.selectElement(iframe, target);
           
-          // Highlight selected element
-          selectedElement.style.outline = '2px solid var(--accent)';
-          selectedElement.style.boxShadow = '0 0 0 4px var(--accent)';
-          editingElement = selectedElement;
+          // Update local vars for backward compatibility with existing code
+          selectedElement = EditorState.state.selectedElement;
+          editingElement = EditorState.state.editingElement;
+          
+          // Highlight selected element via DomManager
+          DomManager.highlightElement(iframe, editorId, true);
           
           // Show inspector with element-specific controls
           showInspector(selectedElement);
@@ -214,23 +227,32 @@
       }
       
       function resetElementSelection(iframe) {
-        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        // Delegate to EditorState which handles highlighting, inspector hide,
+        // and localStorage persistence
+        EditorState.deselectElement(iframe);
         
-        if (selectedElement) {
-          selectedElement.style.outline = '';
-          selectedElement.style.boxShadow = '';
-          selectedElement = null;
-          editingElement = null;
+        // Update local vars for backward compatibility
+        selectedElement = EditorState.state.selectedElement;
+        editingElement = EditorState.state.editingElement;
+        
+        // Highlight reset already done in Editor and inspector hide done in EditorState
+        // But ensure local state sync:
+        const inspectorContent = document.getElementById('inspector-content');
+        if (inspectorContent) {
+          inspectorContent.style.display = 'none';
+          inspectorContent.innerHTML = '';
+        }
+        const inspector = document.getElementById('inspector');
+        if (inspector) {
+          inspector.style.transform = 'translateX(320px)';
         }
         
-        // Hide inspector
-        inspector.style.transform = 'translateX(320px)';
-        inspectorContent.innerHTML = '';
-        inspectorContent.style.display = 'none';
-        
-        // Reset body styles
-        doc.body.style.userSelect = '';
-        doc.body.style.cursor = 'default';
+        // Reset body styles in iframe
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (doc) {
+          doc.body.style.userSelect = '';
+          doc.body.style.cursor = 'default';
+        }
       }
       
       function showInspector(element) {
@@ -346,9 +368,213 @@
         }
         
         inspectorContent.innerHTML = html;
-      }
       
-      // ==================== CLICK OUTSIDE TO CLOSE ====================
+      // === PHASE 3: Apply changes from inspector to iframe DOM ===
+      // We use event delegation: attach handlers once after the inspector is built
+      attachInspectorChangeHandlers(iframe, selectedElement);
+    }
+    
+    // === PHASE 3: Attach change handlers to inspector inputs ===
+    function attachInspectorChangeHandlers(iframe, element) {
+      if (!iframe || !element) return;
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      if (!doc) return;
+  
+      const tag = element.tagName.toLowerCase();
+  
+      // Helper: apply a style property to the element in the iframe
+      const applyStyle = (prop, value) => {
+        const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+        if (!el) return;
+        el.style[prop] = value;
+      };
+  
+      // Helper: record a modification in editor state
+      const recordMod = (property, original, newValue) => {
+        EditorState.recordModification({
+          property,
+          original,
+          newValue,
+          elementId: element.getAttribute('data-editor-id') || ''
+        });
+        EditorState.saveDraftChange({
+          elementId: element.getAttribute('data-editor-id') || '',
+          type: 'style',
+          modifications: { [property]: newValue }
+        });
+      };
+  
+      // --- Image inputs ---
+      if (tag === 'img') {
+        // Image source
+        const imgSrcInput = doc.querySelector('input[placeholder="Image URL"]');
+        if (imgSrcInput) {
+          imgSrcInput.oninput = () => {
+            const newSrc = imgSrcInput.value;
+            const origSrc = element.getAttribute('src') || '';
+            const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+            if (el) el.src = newSrc;
+            recordMod('src', origSrc, newSrc);
+          };
+        }
+        // Alt text
+        const imgAltInput = doc.querySelector('input[placeholder="Alt Text"]');
+        if (imgAltInput) {
+          imgAltInput.oninput = () => {
+            const newAlt = imgAltInput.value;
+            const origAlt = element.getAttribute('alt') || '';
+            const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+            if (el) el.alt = newAlt;
+            recordMod('alt', origAlt, newAlt);
+          };
+        }
+      }
+  
+      // --- Link inputs ---
+      if (tag === 'a') {
+        // Link text
+        const linkTextInput = doc.querySelector('input[placeholder="Link Text"]');
+        if (linkTextInput) {
+          linkTextInput.oninput = () => {
+            const newText = linkTextInput.value;
+            const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+            if (el) el.innerText = newText;
+            recordMod('text', element.innerText || '', newText);
+          };
+        }
+        // URL
+        const linkUrlInput = doc.querySelector('input[type="url"]');
+        if (linkUrlInput) {
+          linkUrlInput.oninput = () => {
+            const newUrl = linkUrlInput.value;
+            const origUrl = element.getAttribute('href') || '';
+            const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+            if (el) el.href = newUrl;
+            recordMod('href', origUrl, newUrl);
+          };
+        }
+        // Target
+        const linkTargetSelect = doc.querySelector('select');
+        if (linkTargetSelect) {
+          linkTargetSelect.onchange = () => {
+            const newTarget = linkTargetSelect.value;
+            const origTarget = element.getAttribute('target') || '';
+            const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+            if (el) el.target = newTarget;
+            recordMod('target', origTarget, newTarget);
+          };
+        }
+      }
+  
+      // --- Text element inputs ---
+      if (tag === 'span' || tag === 'div' || tag === 'p' || tag === 'h1' || tag === 'h2' || tag === 'h3' || tag === 'h4') {
+        // Text content (textarea)
+        const textTextarea = doc.querySelector('textarea');
+        if (textTextarea) {
+          textTextarea.oninput = () => {
+            const newText = textTextarea.value;
+            const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+            if (el) el.innerText = newText;
+            recordMod('text', element.innerText || '', newText);
+          };
+        }
+        // Font family
+        const fontFamilyInput = doc.querySelector('input[placeholder="e.g. Inter, serif"]');
+        if (fontFamilyInput) {
+          fontFamilyInput.oninput = () => {
+            const newFamily = fontFamilyInput.value;
+            const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+            if (el) el.style.fontFamily = newFamily;
+            recordMod('fontFamily', computed.fontFamily || '', newFamily);
+          };
+        }
+        // Font size
+        const fontSizeInput = doc.querySelector('input[placeholder="e.g. 1rem"]');
+        if (fontSizeInput) {
+          fontSizeInput.oninput = () => {
+            const newSize = fontSizeInput.value;
+            const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+            if (el) el.style.fontSize = newSize;
+            recordMod('fontSize', computed.fontSize || '', newSize);
+          };
+        }
+        // Font weight
+        const fontWeightSelect = doc.querySelector('select[index="400"]'); // Normal option
+        // Actually, let me find the font weight select properly
+        const fontWeightSelect = doc.querySelector('select'); // The first/select in the inspector for text
+        if (fontWeightSelect && fontWeightSelect.options.length > 0) {
+          // The font weight is the third select: Normal (400), Bold (700), Black (900)
+          // Let me be more specific: it's the select after font size and color
+          // Actually, let me just attach onchange to the select and determine which one
+          fontWeightSelect.onchange = () => {
+            const newWeight = fontWeightSelect.value;
+            const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+            if (el) el.style.fontWeight = newWeight;
+            recordMod('fontWeight', computed.fontWeight || '', newWeight);
+          };
+        }
+        // Text color
+        const colorInput = doc.querySelector('input[type="color"]');
+        if (colorInput) {
+          colorInput.oninput = () => {
+            const newColor = colorInput.value;
+            const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+            if (el) el.style.color = newColor;
+            recordMod('color', computed.color || '', newColor);
+          };
+        }
+        // Text alignment
+        const alignmentSelect = doc.querySelector('select'); // The last select for alignment
+        // There are multiple selects; the alignment is the last one (right after color)
+        // Let me detect it by position: after we've handled font family, size, weight, color
+        // Actually, simpler: attach to all selects but track which one was changed
+        // For now, let me just handle the alignment select specifically
+        const alignmentSelects = doc.querySelectorAll('select');
+        if (alignmentSelects.length >= 4) {
+          // The 4th select (index 3) is text alignment
+          alignmentSelects[3].onchange = () => {
+            const newAlign = alignmentSelects[3].value;
+            const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+            if (el) el.style.textAlign = newAlign;
+            recordMod('textAlign', computed.textAlign || '', newAlign);
+          };
+        }
+      }
+  
+      // --- Container/section inputs ---
+      // Background color
+      const bgColorInput = doc.querySelector('input[type="color"]');
+      if (bgColorInput) {
+        bgColorInput.oninput = () => {
+          const newBgColor = bgColorInput.value;
+          const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+          if (el) el.style.backgroundColor = newBgColor;
+          recordMod('backgroundColor', computed.backgroundColor || '', newBgColor);
+        };
+      }
+      // Padding
+      const paddingInput = doc.querySelector('input[placeholder="e.g. 1rem 2rem"]');
+      if (paddingInput) {
+        paddingInput.oninput = () => {
+          const newPadding = paddingInput.value;
+          const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+          if (el) el.style.padding = newPadding;
+          recordMod('padding', computed.padding || '', newPadding);
+        };
+      }
+      // Margin
+      const marginInput = doc.querySelector('input[placeholder="e.g. 1rem"]');
+      if (marginInput) {
+        marginInput.oninput = () => {
+          const newMargin = marginInput.value;
+          const el = doc.querySelector(`[data-editor-id="${EditorState.state.selectedElement.getAttribute('data-editor-id') || ''}"]`);
+          if (el) el.style.margin = newMargin;
+          recordMod('margin', computed.margin || '', newMargin);
+        };
+      }
+    }
+    
+    // ==================== CLICK OUTSIDE TO CLOSE ====================
       document.addEventListener('click', (e) => {
         // Close inspector if clicking outside the selected element
         if (selectedElement && !selectedElement.contains(e.target) && e.target !== editModeBtn) {
@@ -361,6 +587,14 @@
         if (isEditMode && e.target !== iframe && !e.target.closest('#inspector')) {
           resetElementSelection(iframe);
         }
+      });
+    </script>
+    <script src="editor-state.js"></script>
+    <script src="dom-manager.js"></script>
+    <script>
+      // Initialize the editor state system after DOM is ready
+      document.addEventListener('DOMContentLoaded', () => {
+        EditorState.init();
       });
     </script>
   </main>
