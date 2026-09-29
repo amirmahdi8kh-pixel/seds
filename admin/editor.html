@@ -657,6 +657,7 @@
     <script src="page-manager.js"></script>
     <script src="section-builder.js"></script>
     <script src="section-builder-ui.js"></script>
+    <script src="style-engine.js"></script>
     <script>
       // Initialize the editor state system after DOM is ready
       document.addEventListener('DOMContentLoaded', () => {
@@ -686,6 +687,11 @@
         // Phase 4.3: UI System initialization
         if (window.UISystem && window.UISystem.SectionList) {
           window.UISystem.SectionList.init();
+        }
+
+        // Phase 4.4: Style Engine initialization
+        if (window.styleEngine) {
+          // Style Engine initializes on-demand when element is selected
         }
       });
     </script>
