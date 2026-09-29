@@ -596,6 +596,7 @@
     <script src="asset-manager.js"></script>
     <script src="state-extension.js"></script>
     <script src="page-manager.js"></script>
+    <script src="section-builder.js"></script>
     <script>
       // Initialize the editor state system after DOM is ready
       document.addEventListener('DOMContentLoaded', () => {
@@ -615,6 +616,11 @@
         // Phase 4.1: Page Manager initialization (loads existing pages)
         if (window.pageManager && window.pageManager.init) {
           window.pageManager.init();
+        }
+
+        // Phase 4.2: Section Builder initialization (loads existing sections)
+        if (window.sectionBuilder && window.sectionBuilder.init) {
+          window.sectionBuilder.init();
         }
       });
     </script>
