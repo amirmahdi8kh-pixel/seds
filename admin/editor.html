@@ -79,8 +79,8 @@
         </button>
 
         <!-- Save / Publish -->
-        <button class="btn--solid" style="font: inherit; padding: 0.5rem 1rem; border: 1px solid var(--accent); border-radius: 0; background: var(--accent); color: var(--bg); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-left: 1rem;">Save</button>
-        <button class="btn" style="font: inherit; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg-2); color: var(--ink); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-left: 0.5rem;">Publish</button>
+        <button class="btn--solid" style="font: inherit; padding: 0.5rem 1rem; border: 1px solid var(--accent); border-radius: 0; background: var(--accent); color: var(--bg); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-left: 1rem;" onclick="window.savePage()">Save</button>
+        <button class="btn" style="font: inherit; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg-2); color: var(--ink); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-left: 0.5rem;" onclick="window.publishPage()">Publish</button>
       </div>
     </header>
 
@@ -648,7 +648,109 @@
         window.UISystem.SectionList.init();
       }
     </script>
-    <script src="editor-state.js"></script>
+
+    <!-- Save / Publish System -->
+    <script>
+      // Dirty state tracking
+      let hasUnsavedChanges = false;
+      let saveTimeout = null;
+      
+      // Record that changes have been made
+      function recordUnsavedChange() {
+        hasUnsavedChanges = true;
+        // Update UI if needed
+        const saveBtn = document.querySelector('button[style*="var(--accent)"]');
+        if (saveBtn) {
+          saveBtn.title = hasUnsavedChanges ? 'Unsaved changes' : 'Save';
+        }
+      }
+      
+      // Debounced auto-save
+      function saveDebounced() {
+        // Clear any pending timeout
+        if (saveTimeout) {
+          clearTimeout(saveTimeout);
+        }
+        // Save after 300ms of no changes
+        saveTimeout = setTimeout(() => {
+          savePage();
+        }, 300);
+      }
+      
+      // Save current page state
+      function savePage() {
+        if (!window.EditorState) return;
+        
+        // Record the modification in the existing history system
+        const element = EditorState.state.selectedElement;
+        if (element) {
+          const elementId = element.getAttribute('data-editor-id') || '';
+          const originalText = element.innerText;
+          
+          // Record the modification
+          EditorState.recordModification({
+            property: 'content',
+            original: originalText,
+            newValue: originalText,
+            elementId: elementId
+          });
+          EditorState.saveDraftChange({
+            elementId: elementId,
+            type: 'content',
+            modifications: { content: originalText }
+          });
+        }
+        
+        // Clear unsaved changes flag
+        hasUnsavedChanges = false;
+        
+        // Fire event for UI update
+        document.dispatchEvent(
+          new CustomEvent('pe-page-saved', {
+            bubbles: false
+          })
+        );
+      }
+      
+      // Publish the current page
+      function publishPage() {
+        if (!window.pageManager) return;
+        
+        // Set page to published status
+        window.pageManager.setPageStatus('published');
+        
+        // Clear unsaved changes flag
+        hasUnsavedChanges = false;
+        
+        // Fire event
+        document.dispatchEvent(
+          new CustomEvent('pe-page-published', {
+            bubbles: false
+          })
+        );
+      }
+      
+      // Check for unsaved changes before navigating away
+      window.addEventListener('beforeunload', (e) => {
+        if (hasUnsavedChanges) {
+          e.preventDefault();
+          e.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
+        }
+      });
+      
+      // Initialize from existing state
+      (function() {
+        const savedState = window.EditorState ? window.EditorState.state : null;
+        if (savedState && savedState.revision > 0) {
+          hasUnsavedChanges = false;
+        }
+      })();
+      
+      // Initialize section list on load
+      if (window.UISystem && window.UISystem.SectionList) {
+        window.UISystem.SectionList.init();
+      }
+    </script>
     <script src="dom-manager.js"></script>
     <script src="design-tokens.js"></script>
     <script src="history.js"></script>
