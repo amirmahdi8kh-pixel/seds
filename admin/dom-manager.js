@@ -14,7 +14,7 @@
 // functions directly, or they can be used as a foundation for the
 // new EditorState module also created in this phase.
 
-export const DomManager = {
+window.DomManager = {
   // -------------------------------------------------------------------------
   // PUBLIC API
   // -------------------------------------------------------------------------
