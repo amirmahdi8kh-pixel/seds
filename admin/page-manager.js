@@ -373,12 +373,62 @@ const PageManager = {
     page.status = status;
     page.updatedAt = Date.now();
 
+    // Add to version history
+    page.versions.push({
+      version: page.version + 1,
+      timestamp: Date.now(),
+      changes: `Status changed to ${status}`,
+      author: 'admin'
+    });
+    page.version = page.versions[page.versions.length - 1].version;
+
     this._persist();
 
     // Fire event
     document.dispatchEvent(
       new CustomEvent('pe-page-status-changed', {
         detail: { pageId, page },
+        bubbles: false
+      })
+    );
+
+    return true;
+  },
+
+  // Restore page to a previous version
+  restoreVersion(pageId, versionNum) {
+    const page = this.getPage(pageId);
+    if (!page) return false;
+
+    // Find the requested version
+    const targetVersion = page.versions.find(v => v.version === versionNum);
+    if (!targetVersion) {
+      console.error(`Version ${versionNum} not found for page ${pageId}`);
+      return false;
+    }
+
+    // Restore page state from the target version
+    page.name = targetVersion.name || page.name;
+    page.slug = targetVersion.slug || page.slug;
+    page.seo = { ...targetVersion.seo };
+    page.status = targetVersion.status || PageStatus.PUBLISHED;
+    page.updatedAt = Date.now();
+
+    // Update version history to reflect the restore
+    page.versions.push({
+      version: page.version + 1,
+      timestamp: Date.now(),
+      changes: `Restored to version ${versionNum}`,
+      author: 'admin'
+    });
+    page.version = page.versions[page.versions.length - 1].version;
+
+    this._persist();
+
+    // Fire event
+    document.dispatchEvent(
+      new CustomEvent('pe-page-version-restored', {
+        detail: { pageId, versionNum, page },
         bubbles: false
       })
     );
