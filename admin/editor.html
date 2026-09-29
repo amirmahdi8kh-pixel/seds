@@ -84,6 +84,25 @@
       </div>
     </header>
 
+    <!-- Section Navigator -->
+    <aside class="section-navigator-panel" style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 300px;
+      background: var(--bg);
+      border-right: 1px solid var(--line);
+      z-index: 80;
+      overflow-y: auto;
+      padding: 1rem;
+    ">
+      <div style="margin-bottom: 1rem;">
+        <h4 style="margin: 0 0 0.5rem 0; font-size: 0.875rem; color: var(--ink);">Sections</h4>
+      </div>
+      <div id="section-navigator" style="height: calc(100vh - 140px); overflow-y: auto;"></div>
+    </div>
+
     <!-- Website iframe -->
     <iframe style="
       width: 100%;
@@ -125,6 +144,29 @@
         </span>
       </div>
       <div id="inspector-content" style="display: none;">
+        <!-- Inspector content will be injected here -->
+      </div>
+    </aside>
+
+    <!-- Section Inspector -->
+    <aside class="section-inspector-panel" style="
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 350px;
+      background: var(--bg);
+      border-left: 1px solid var(--line);
+      z-index: 80;
+      overflow-y: auto;
+      padding: 1rem;
+      display: none;
+    ">
+      <div style="margin-bottom: 1rem;">
+        <h4 style="margin: 0 0 0.5rem 0; font-size: 0.875rem; color: var(--ink);">Section Inspector</h4>
+        <button class="btn--solid" style="font: inherit; padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 0; background: var(--bg-2); color: var(--ink); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem;" onclick="toggleSectionInspector()">Close Inspector</button>
+      </div>
+      <div id="section-inspector-content" style="padding: 0.5rem 0;">
         <!-- Inspector content will be injected here -->
       </div>
     </aside>
@@ -589,6 +631,23 @@
         }
       });
     </script>
+
+    <script>
+      // Toggle section inspector visibility
+      window.toggleSectionInspector = function() {
+        const inspector = document.querySelector('.section-inspector-panel');
+        if (inspector.style.display === 'none') {
+          inspector.style.display = 'block';
+        } else {
+          inspector.style.display = 'none';
+        }
+      };
+      
+      // Initialize section list on load
+      if (window.UISystem && window.UISystem.SectionList) {
+        window.UISystem.SectionList.init();
+      }
+    </script>
     <script src="editor-state.js"></script>
     <script src="dom-manager.js"></script>
     <script src="design-tokens.js"></script>
@@ -597,6 +656,7 @@
     <script src="state-extension.js"></script>
     <script src="page-manager.js"></script>
     <script src="section-builder.js"></script>
+    <script src="section-builder-ui.js"></script>
     <script>
       // Initialize the editor state system after DOM is ready
       document.addEventListener('DOMContentLoaded', () => {
@@ -622,7 +682,29 @@
         if (window.sectionBuilder && window.sectionBuilder.init) {
           window.sectionBuilder.init();
         }
+
+        // Phase 4.3: UI System initialization
+        if (window.UISystem && window.UISystem.SectionList) {
+          window.UISystem.SectionList.init();
+        }
       });
+    </script>
+
+    <script>
+      // Toggle section inspector visibility
+      window.toggleSectionInspector = function() {
+        const inspector = document.querySelector('.section-inspector-panel');
+        if (inspector.style.display === 'none') {
+          inspector.style.display = 'block';
+        } else {
+          inspector.style.display = 'none';
+        }
+      };
+      
+      // Initialize section list on load
+      if (window.UISystem && window.UISystem.SectionList) {
+        window.UISystem.SectionList.init();
+      }
     </script>
   </main>
 </body>
