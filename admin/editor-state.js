@@ -14,7 +14,7 @@
 // For this phase we expose a single object the inline script
 // can extend/consume without conflict.
 
-window.EditorState = {
+export const EditorState = {
   // -------------------------------------------------------------------------
   // PUBLIC API — the existing inline script may call these directly.
   // -------------------------------------------------------------------------

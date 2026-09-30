@@ -503,4 +503,4 @@ if (typeof window !== 'undefined') {
 }
 
 // Export
-window.pageManager = PageManager;
+export const pageManager = PageManager;
